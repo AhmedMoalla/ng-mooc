@@ -18,6 +18,7 @@ interface Course {
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent implements OnInit {
+  hideImages: boolean = false;
   courses: Course[] = [
     {
       id: 1,
@@ -57,6 +58,10 @@ export class CourseListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClick() {
+    this.hideImages = !this.hideImages;
   }
 
 }
