@@ -24,4 +24,15 @@ export class CourseService {
         })
       );
   }
+
+  getCourseById(id: number): Observable<Course> {
+    return this.http.get<Course>(this.url + '/' + id)
+      .pipe(
+        tap(course => console.log('Course', course)),
+        catchError((err) => {
+          console.log('An Error Happened', err.message);
+          return throwError(err.message);
+        })
+      );
+  }
 }
