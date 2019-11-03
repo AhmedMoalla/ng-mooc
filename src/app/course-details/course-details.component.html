@@ -1,4 +1,4 @@
-<mat-card *ngIf="course">
+<mat-card *ngIf="course$ | async as course">
     <mat-card-header>
         <mat-card-title>Course Details: ID = {{ course.id }}</mat-card-title>
     </mat-card-header>

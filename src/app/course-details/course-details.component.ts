@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../course-list/course-list.component';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../course.service';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-course-details',
@@ -9,8 +11,7 @@ import { CourseService } from '../course.service';
   styleUrls: ['./course-details.component.css']
 })
 export class CourseDetailsComponent implements OnInit {
-  courseId: number;
-  course: Course;
+  course$: Observable<Course>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -18,9 +19,11 @@ export class CourseDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.courseId = +this.activatedRoute.snapshot.params.id;
-    this.courseService.getCourseById(this.courseId)
-      .subscribe(course => this.course = course);
+    this.course$ = this.activatedRoute.paramMap
+      .pipe(
+        map(params => +params.get('id')),
+        switchMap(id =>  this.courseService.getCourseById(id))
+      );
   }
 
 }
