@@ -19,6 +19,8 @@ interface Course {
 })
 export class CourseListComponent implements OnInit {
   hideImages: boolean = false;
+  _filter: string = '';
+
   courses: Course[] = [
     {
       id: 1,
@@ -55,13 +57,31 @@ export class CourseListComponent implements OnInit {
     }
   ];
 
+  filteredCourses: Course[];
+
+  get filter() {
+    return this._filter;
+  }
+
+  set filter(value) {
+    this._filter = value;
+    this.filterCourses(value);
+  }
   constructor() { }
 
   ngOnInit() {
+    this.filteredCourses = this.courses;
   }
 
   onClick() {
     this.hideImages = !this.hideImages;
   }
 
+  filterCourses(filter: string) {
+    if (!filter){
+      this.filteredCourses = this.courses;
+    } else {
+      this.filteredCourses = this.courses.filter(course => course.title.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
+    }
+  }
 }

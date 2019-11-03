@@ -4,11 +4,15 @@
     </mat-card-header>
     <mat-card-content>
         <div>
+            <mat-form-field>
+                <input matInput placeholder="Search" [(ngModel)]="filter">
+            </mat-form-field>
             <button mat-raised-button color="primary" (click)="onClick()">
                 <mat-icon>{{ hideImages ? 'close' : 'check' }}</mat-icon>
                 {{ hideImages ? 'Hide' : 'Show' }} Images
             </button>
         </div>
+        Filtered by: <strong>{{ filter }}</strong>
         <table>
             <tr>
                 <th>ID</th>
@@ -18,7 +22,7 @@
                 <th>Price</th>
                 <th>Rating</th>
             </tr>
-            <ng-container *ngFor="let course of courses">
+            <ng-container *ngFor="let course of filteredCourses">
                 <tr *ngIf="course.public">
                     <td>{{ course.id | customId:course.title:course.date }}</td>
                     <td *ngIf="hideImages"><img [src]="course.image" width="40" height="40"></td>
