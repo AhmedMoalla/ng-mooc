@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Course } from './course-list/course-list.component';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CourseService {
 
   constructor() { }

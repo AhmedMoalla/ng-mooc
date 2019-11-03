@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseService } from '../course.service';
 
 export interface Course {
   id: number;
@@ -26,6 +27,13 @@ export class CourseListComponent implements OnInit {
   filteredCourses: Course[];
   temporaryMessage = '';
 
+  constructor(private courseService: CourseService) { }
+
+  ngOnInit() {
+    this.courses = this.courseService.getCourses();
+    this.filteredCourses = this.courses;
+  }
+
   get filter() {
     return this._filter;
   }
@@ -34,11 +42,7 @@ export class CourseListComponent implements OnInit {
     this._filter = value;
     this.filterCourses(value);
   }
-  constructor() { }
 
-  ngOnInit() {
-    this.filteredCourses = this.courses;
-  }
 
   onClick() {
     this.hideImages = !this.hideImages;

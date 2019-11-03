@@ -7,7 +7,6 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CustomIdPipe } from './course-list/custom-id.pipe';
 import { FormsModule } from '@angular/forms';
 import { StarComponent } from './shared/star/star.component';
-import { CourseService } from './course.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,7 @@ import { CourseService } from './course.service';
     MatCardModule, // <mat-card></mat-card>
     MatInputModule, // matInput
   ],
-  providers: [CourseService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
