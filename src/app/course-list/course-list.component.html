@@ -10,12 +10,14 @@
                 <th>Price</th>
                 <th>Rating</th>
             </tr>
-            <tr *ngFor="let course of courses">
-                <td>{{ course.id }}</td>
-                <td>{{ course.title }}</td>
-                <td>{{ course.price }}</td>
-                <td>{{ course.rating }}</td>
-            </tr>
+            <ng-container *ngFor="let course of courses">
+                <tr *ngIf="course.public">
+                    <td>{{ course.id }}</td>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.price }}</td>
+                    <td>{{ course.rating }}</td>
+                </tr>
+            </ng-container>
         </table>
     </mat-card-content>
 </mat-card>
