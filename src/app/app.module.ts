@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './course-list/course-list.component';
+import { CustomIdPipe } from './course-list/custom-id.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseListComponent
+    CourseListComponent,
+    CustomIdPipe
   ],
   imports: [
     // Default module to import for application running in the browser

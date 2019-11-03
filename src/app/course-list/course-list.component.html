@@ -13,7 +13,7 @@
             </tr>
             <ng-container *ngFor="let course of courses">
                 <tr *ngIf="course.public">
-                    <td>{{ course.id }}</td>
+                    <td>{{ course.id | customId:course.title:course.date }}</td>
                     <td>{{ course.title | lowercase }}</td>
                     <td>{{ course.date | date }}</td>
                     <td>{{ course.price | currency:'USD' }}</td>
