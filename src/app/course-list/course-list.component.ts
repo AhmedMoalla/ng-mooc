@@ -31,8 +31,10 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit() {
     this.courseService.getCourses()
-      .subscribe(courses => this.courses = courses);
-    this.filteredCourses = this.courses;
+      .subscribe(courses => {
+        this.courses = courses
+        this.filteredCourses = this.courses;
+      });
   }
 
   get filter() {
