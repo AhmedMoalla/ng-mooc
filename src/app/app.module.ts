@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeCourseBackend } from './inmemory-backend.service';
 import { API_URL } from './injection-tokens';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseListComponent,
     CustomIdPipe,
-    StarComponent
+    StarComponent,
+    HomeComponent
   ],
   imports: [
     // Default module to import for application running in the browser
