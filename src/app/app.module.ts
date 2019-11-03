@@ -7,6 +7,9 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CustomIdPipe } from './course-list/custom-id.pipe';
 import { FormsModule } from '@angular/forms';
 import { StarComponent } from './shared/star/star.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeCourseBackend } from './inmemory-backend.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,10 @@ import { StarComponent } from './shared/star/star.component';
     FormsModule,
     // Used by Angular Material
     NoopAnimationsModule,
+    // Used to provide HttpClient
+    HttpClientModule,
+    // Used to fake a backend service (MUST be imported after HttpClientModule)
+    HttpClientInMemoryWebApiModule.forRoot(FakeCourseBackend),
 
     // Angular Material Components
     MatToolbarModule, // <mat-toolbar></mat-toolbar>
