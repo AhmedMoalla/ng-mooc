@@ -1,0 +1,11 @@
+mat-card-content > .container div {
+    margin-bottom: 10px;
+}
+
+mat-card-content > .container div strong {
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+}

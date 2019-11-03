@@ -1,0 +1,44 @@
+<mat-card *ngIf="course">
+    <mat-card-header>
+        <mat-card-title>Course Details: ID = {{ course.id }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="container">
+            <div>
+                <div>
+                    <strong>ID</strong>
+                    <span>{{ course.id | customId:course.title:course.date }}</span>
+                </div>
+                <div>
+                    <strong>Title</strong>
+                    <span>{{ course.title }}</span>
+                </div>
+                <div>
+                    <strong>Category</strong>
+                    <span>{{ course.category }}</span>
+                </div>
+                <div>
+                    <strong>Description</strong>
+                    <span>{{ course.description }}</span>
+                </div>
+                <div>
+                    <strong>Price</strong>
+                    <span>{{ course.price | currency:'USD' }}</span>
+                </div>
+                <div>
+                    <strong>Date</strong>
+                    <span>{{ course.date | date }}</span>
+                </div>
+                <div>
+                    <strong>Rating</strong>
+                    <span>
+                        <app-star [rating]="course.rating"></app-star>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <img [src]="course.image">
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

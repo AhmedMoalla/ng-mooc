@@ -12,6 +12,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeCourseBackend } from './inmemory-backend.service';
 import { API_URL } from './injection-tokens';
 import { HomeComponent } from './home/home.component';
+import { CourseDetailsComponent } from './course-details/course-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     CourseListComponent,
     CustomIdPipe,
     StarComponent,
-    HomeComponent
+    HomeComponent,
+    CourseDetailsComponent
   ],
   imports: [
     // Default module to import for application running in the browser
