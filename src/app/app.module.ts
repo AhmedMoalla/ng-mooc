@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule, MatInputModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './course-list/course-list.component';
@@ -10,6 +10,7 @@ import { StarComponent } from './shared/star/star.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeCourseBackend } from './inmemory-backend.service';
+import { API_URL } from './injection-tokens';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import { FakeCourseBackend } from './inmemory-backend.service';
     MatCardModule, // <mat-card></mat-card>
     MatInputModule, // matInput
   ],
-  providers: [],
+  providers: [
+    { provide: API_URL, useValue: 'http://website.com/api/courses' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Course } from './course-list/course-list.component';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { API_URL } from './injection-tokens';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-  private url: string = "http://website.com/api/courses";
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    @Inject(API_URL) private url: string,
+    private http: HttpClient) { }
 
   getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(this.url)
