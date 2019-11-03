@@ -14,10 +14,11 @@ import { API_URL } from './injection-tokens';
 import { HomeComponent } from './home/home.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CourseIdGuard } from './course-id.guard';
 
 const routes: Routes = [
   { path: 'courses', component: CourseListComponent },
-  { path: 'courses/:id', component: CourseDetailsComponent },
+  { path: 'courses/:id', component: CourseDetailsComponent, canActivate: [CourseIdGuard] },
   { path: 'home', component: HomeComponent },
   // pathMatch: 'full' is needed because '' matches everything so we need to tell the router that it must exactly match ''
   { path: '', redirectTo: 'home', pathMatch: 'full' },
