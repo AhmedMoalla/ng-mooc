@@ -31,7 +31,7 @@
                     <td 
                         [ngStyle]="{'color': course.price > 15 ? 'red' : 'black'}"
                         [ngClass]="{'bold': course.price > 15}">{{ course.price | currency:'USD' }}</td>
-                    <td>{{ course.rating }}</td>
+                    <td><app-star [rating]="course.rating"></app-star></td>
                 </tr>
             </ng-container>
         </table>

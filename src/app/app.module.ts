@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CustomIdPipe } from './course-list/custom-id.pipe';
 import { FormsModule } from '@angular/forms';
+import { StarComponent } from './shared/star/star.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseListComponent,
-    CustomIdPipe
+    CustomIdPipe,
+    StarComponent
   ],
   imports: [
     // Default module to import for application running in the browser
