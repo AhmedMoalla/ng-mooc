@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, InjectionToken } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule, MatInputModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './course-list/course-list.component';
@@ -13,6 +13,16 @@ import { FakeCourseBackend } from './inmemory-backend.service';
 import { API_URL } from './injection-tokens';
 import { HomeComponent } from './home/home.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'courses', component: CourseListComponent },
+  { path: 'courses/:id', component: CourseDetailsComponent },
+  { path: 'home', component: HomeComponent },
+  // pathMatch: 'full' is needed because '' matches everything so we need to tell the router that it must exactly match ''
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' }
+]
 
 @NgModule({
   declarations: [
@@ -34,6 +44,8 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     HttpClientModule,
     // Used to fake a backend service (MUST be imported after HttpClientModule)
     HttpClientInMemoryWebApiModule.forRoot(FakeCourseBackend),
+    // Used to provide routing functionality
+    RouterModule.forRoot(routes),
 
     // Angular Material Components
     MatToolbarModule, // <mat-toolbar></mat-toolbar>
