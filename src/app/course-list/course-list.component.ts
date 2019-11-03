@@ -1,12 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Course {
+  id: number;
+  title: string;
+  image: string;
+  category: string;
+  description: string;
+  price: number;
+  date: string;
+  rating: number;
+  public: boolean;
+}
+
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent implements OnInit {
-  courses = [
+  courses: Course[] = [
     {
       id: 1,
       title: 'Angular',
@@ -15,7 +27,8 @@ export class CourseListComponent implements OnInit {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porta et dui at porttitor. Nullam sed lectus aliquam, dictum lacus eu, vestibulum libero.',
       price: 30.5,
       date: '03-11-2019',
-      rating: 4.3
+      rating: 4.3,
+      public: true
     },
     {
       id: 2,
@@ -25,7 +38,8 @@ export class CourseListComponent implements OnInit {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porta et dui at porttitor. Nullam sed lectus aliquam, dictum lacus eu, vestibulum libero.',
       price: 14.36,
       date: '12-12-2012',
-      rating: 5
+      rating: 5,
+      public: true
     },
     {
       id: 3,
@@ -35,7 +49,8 @@ export class CourseListComponent implements OnInit {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porta et dui at porttitor. Nullam sed lectus aliquam, dictum lacus eu, vestibulum libero.',
       price: 8.5,
       date: '20-09-2018',
-      rating: 3.2
+      rating: 3.2,
+      public: false
     }
   ];
 
