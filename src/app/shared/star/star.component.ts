@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-star',
@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StarComponent implements OnInit {
   @Input() rating: number;
+  @Output() ratingClicked: EventEmitter<number> = new EventEmitter<number>();
+
   range: number[] = [];
   hasFraction: boolean = false;
 

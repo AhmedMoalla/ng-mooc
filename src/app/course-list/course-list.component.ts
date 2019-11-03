@@ -58,6 +58,7 @@ export class CourseListComponent implements OnInit {
   ];
 
   filteredCourses: Course[];
+  temporaryMessage = '';
 
   get filter() {
     return this._filter;
@@ -83,5 +84,10 @@ export class CourseListComponent implements OnInit {
     } else {
       this.filteredCourses = this.courses.filter(course => course.title.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
     }
+  }
+
+  onRatingClicked(rating: number) {
+    this.temporaryMessage = 'The clicked product is rated: ' + rating + '/5';
+    setTimeout(() => this.temporaryMessage = '', 2000);
   }
 }

@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>Course List</mat-card-title>
+        <mat-card-title>Course List {{ ': ' + temporaryMessage }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <div>
@@ -31,7 +31,7 @@
                     <td 
                         [ngStyle]="{'color': course.price > 15 ? 'red' : 'black'}"
                         [ngClass]="{'bold': course.price > 15}">{{ course.price | currency:'USD' }}</td>
-                    <td><app-star [rating]="course.rating"></app-star></td>
+                    <td><app-star (ratingClicked)="onRatingClicked($event)" [rating]="course.rating"></app-star></td>
                 </tr>
             </ng-container>
         </table>
