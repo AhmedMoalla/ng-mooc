@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './course-list/course-list.component';
 
@@ -16,7 +16,8 @@ import { CourseListComponent } from './course-list/course-list.component';
     // Angular Material Components
     MatToolbarModule, // <mat-toolbar></mat-toolbar>
     MatIconModule, // <mat-icon></mat-icon>
-    MatButtonModule // mat-button
+    MatButtonModule, // mat-button
+    MatCardModule, // <mat-card></mat-card>
   ],
   providers: [],
   bootstrap: [AppComponent]
