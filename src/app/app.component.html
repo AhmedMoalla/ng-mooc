@@ -1,13 +1,12 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-    <a mat-button>
+    <a mat-button [routerLink]="['home']">
         <span>Ng-Mooc</span>
     </a>
-    <a mat-button>
+    <a mat-button [routerLink]="['courses']">
         <mat-icon>list</mat-icon>
         <span>Course List</span>
     </a>
 </mat-toolbar>
 <div style="margin: 10px">
-    <app-course-list></app-course-list>
-    <!-- <app-home></app-home> -->
+    <router-outlet></router-outlet>
 </div>
