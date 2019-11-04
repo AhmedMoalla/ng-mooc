@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-course-form',
@@ -9,21 +9,16 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ReactiveCourseFormComponent implements OnInit {
   
   urlRegex: RegExp = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
-  courseForm: FormGroup = new FormGroup({
-    title: new FormControl(),
-    image: new FormControl(),
-    category: new FormControl(),
-    description: new FormControl(),
-    price: new FormControl(),
-    rating: new FormControl()
-  });
+  courseForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    // use patchValue when setting SOME controls values
-    // use setValue when setting ALL controls values
-    this.courseForm.patchValue({
+    this.courseForm = this.fb.group({
+      title: this.fb.control(''),
+      image: [''], // This is equivalent to the line above
+      category: '', // This is equivalent too
+      description: '',
       price: 0,
       rating: 0
     });
