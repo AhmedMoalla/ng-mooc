@@ -5,7 +5,7 @@ import { MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule, MatInp
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CustomIdPipe } from './course-list/custom-id.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StarComponent } from './shared/star/star.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -16,11 +16,12 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { RouterModule, Routes } from '@angular/router';
 import { CourseIdGuard } from './course-id.guard';
 import { CourseFormComponent } from './course-form/course-form.component';
+import { ReactiveCourseFormComponent } from './reactive-course-form/reactive-course-form.component';
 
 const routes: Routes = [
   { path: 'courses', component: CourseListComponent },
   { path: 'courses/:id', component: CourseDetailsComponent, canActivate: [CourseIdGuard] },
-  { path: 'create-course', component: CourseFormComponent },
+  { path: 'create-course', component: ReactiveCourseFormComponent/*CourseFormComponent*/ },
   { path: 'home', component: HomeComponent },
   // pathMatch: 'full' is needed because '' matches everything so we need to tell the router that it must exactly match ''
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -35,13 +36,16 @@ const routes: Routes = [
     StarComponent,
     HomeComponent,
     CourseDetailsComponent,
-    CourseFormComponent
+    CourseFormComponent,
+    ReactiveCourseFormComponent
   ],
   imports: [
     // Default module to import for application running in the browser
     BrowserModule,
-    // Needed for ngModel
+    // Needed for template-driven forms
     FormsModule,
+    // Needed for reactive forms
+    ReactiveFormsModule,
     // Used by Angular Material
     NoopAnimationsModule,
     // Used to provide HttpClient
