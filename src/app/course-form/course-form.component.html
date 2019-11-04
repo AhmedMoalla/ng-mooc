@@ -110,11 +110,11 @@
                 </mat-error>    
                 <mat-error
                     *ngIf="ratingControl.hasError('min')">
-                    Rating can't be lesser than<strong>{{ ratingControl.getError('min').min | currency:'USD' }}</strong>
+                    Rating can't be lesser than<strong>{{ ratingControl.getError('min').min }}</strong>
                 </mat-error>
                 <mat-error
                     *ngIf="ratingControl.hasError('max')">
-                    Rating can't be greater than<strong>{{ ratingControl.getError('max').max | currency:'USD' }}</strong>
+                    Rating can't be greater than<strong>{{ ratingControl.getError('max').max }}</strong>
                 </mat-error>
             </mat-form-field>
             <button mat-raised-button color="primary" type="submit" [disabled]="creationForm.invalid">Create</button>
