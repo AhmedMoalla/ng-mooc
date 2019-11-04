@@ -15,10 +15,12 @@ import { HomeComponent } from './home/home.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CourseIdGuard } from './course-id.guard';
+import { CourseFormComponent } from './course-form/course-form.component';
 
 const routes: Routes = [
   { path: 'courses', component: CourseListComponent },
   { path: 'courses/:id', component: CourseDetailsComponent, canActivate: [CourseIdGuard] },
+  { path: 'create-course', component: CourseFormComponent },
   { path: 'home', component: HomeComponent },
   // pathMatch: 'full' is needed because '' matches everything so we need to tell the router that it must exactly match ''
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -32,7 +34,8 @@ const routes: Routes = [
     CustomIdPipe,
     StarComponent,
     HomeComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    CourseFormComponent
   ],
   imports: [
     // Default module to import for application running in the browser

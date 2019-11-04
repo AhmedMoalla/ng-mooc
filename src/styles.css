@@ -37,3 +37,8 @@ th:first-child, td:first-child {
 th:last-child, td:last-child {
     padding-right: 24px;
 }
+
+form {
+    display: flex; 
+    flex-direction: column;
+}

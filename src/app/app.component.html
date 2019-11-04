@@ -6,6 +6,10 @@
         <mat-icon>list</mat-icon>
         <span>Course List</span>
     </a>
+    <a mat-button [routerLink]="['/create-course']">
+        <mat-icon>add</mat-icon>
+        <span>Create</span>
+    </a>
 </mat-toolbar>
 <div style="margin: 10px">
     <router-outlet></router-outlet>

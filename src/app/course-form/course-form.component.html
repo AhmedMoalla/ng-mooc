@@ -1,0 +1,123 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Create Course</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #creationForm="ngForm">
+            <mat-form-field>
+                <input 
+                    matInput 
+                    placeholder="Title"
+                    required
+                    minlength="3"
+                    [(ngModel)]="course.title"
+                    name="title"
+                    #titleControl="ngModel">
+                <mat-error 
+                    *ngIf="titleControl.hasError('required')">
+                    Title is <strong>required</strong>
+                </mat-error>
+                <mat-error 
+                    *ngIf="titleControl.hasError('minlength')">
+                    Title must be longer than <strong>{{ titleControl.getError('minlength').requiredLength }} characters</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input 
+                    matInput 
+                    placeholder="Image Url"
+                    required
+                    [pattern]="urlRegex"
+                    [(ngModel)]="course.image"
+                    name="image"
+                    #imageControl="ngModel">
+                <mat-error 
+                    *ngIf="imageControl.hasError('required')">
+                    Image is <strong>required</strong>
+                </mat-error>
+                <mat-error 
+                    *ngIf="imageControl.hasError('pattern')">
+                    Image url must be a <strong>valid http url</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input 
+                    matInput 
+                    placeholder="Category"
+                    required
+                    minlength="3"
+                    [(ngModel)]="course.category"
+                    name="category"
+                    #categoryControl="ngModel">
+                <mat-error 
+                    *ngIf="categoryControl.hasError('required')">
+                    Category is <strong>required</strong>
+                </mat-error>
+                <mat-error 
+                    *ngIf="categoryControl.hasError('minlength')">
+                    Category must be longer than <strong>{{ categoryControl.getError('minlength').requiredLength }} characters</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input 
+                    matInput 
+                    placeholder="Description"
+                    maxlength="100"
+                    [(ngModel)]="course.description"
+                    name="description"
+                    #descriptionControl="ngModel">
+                <mat-error 
+                    *ngIf="descriptionControl.hasError('maxlength')">
+                    Description can't be longer than <strong>{{ descriptionControl.getError('maxlength').requiredLength }} characters</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input 
+                    matInput 
+                    placeholder="Price"
+                    min="0"
+                    max="100"
+                    required
+                    [(ngModel)]="course.price"
+                    name="price"
+                    #priceControl="ngModel">
+                <mat-error
+                    *ngIf="priceControl.hasError('required')">
+                    Price is <strong>required</strong>
+                </mat-error>    
+                <mat-error
+                    *ngIf="priceControl.hasError('min')">
+                    Price can't be lesser than<strong>{{ priceControl.getError('min').min | currency:'USD' }}</strong>
+                </mat-error>
+                <mat-error
+                    *ngIf="priceControl.hasError('max')">
+                    Price can't be greater than<strong>{{ priceControl.getError('max').max | currency:'USD' }}</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input 
+                    matInput 
+                    placeholder="Rating"
+                    min="0"
+                    max="5"
+                    required
+                    [(ngModel)]="course.rating"
+                    name="rating"
+                    #ratingControl="ngModel">
+                <mat-error
+                    *ngIf="ratingControl.hasError('required')">
+                    Rating is <strong>required</strong>
+                </mat-error>    
+                <mat-error
+                    *ngIf="ratingControl.hasError('min')">
+                    Rating can't be lesser than<strong>{{ ratingControl.getError('min').min | currency:'USD' }}</strong>
+                </mat-error>
+                <mat-error
+                    *ngIf="ratingControl.hasError('max')">
+                    Rating can't be greater than<strong>{{ ratingControl.getError('max').max | currency:'USD' }}</strong>
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="creationForm.invalid">Create</button>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
 
 export interface Course {
-  id: number;
+  id?: number;
   title: string;
   image: string;
   category: string;
   description: string;
   price: number;
-  date: string;
+  date?: string;
   rating: number;
-  public: boolean;
+  public?: boolean;
 }
 
 @Component({
