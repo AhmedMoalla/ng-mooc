@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../course-list/course-list.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-course-form',
@@ -23,4 +24,7 @@ export class CourseFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  save(courseForm: NgForm) {
+    console.log('Created course:', courseForm.value);
+  }
 }
