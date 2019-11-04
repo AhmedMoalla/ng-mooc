@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-course-form',
@@ -15,13 +15,20 @@ export class ReactiveCourseFormComponent implements OnInit {
 
   ngOnInit() {
     this.courseForm = this.fb.group({
-      title: this.fb.control(''),
-      image: [''], // This is equivalent to the line above
-      category: '', // This is equivalent too
-      description: '',
-      price: 0,
-      rating: 0
+      title: this.fb.control('', [Validators.required, Validators.minLength(3)]),
+      image: ['', [Validators.required, Validators.pattern(this.urlRegex)]], // This is equivalent to the line above
+      category: this.fb.control('', [Validators.required, Validators.minLength(3)]),
+      description: this.fb.control('', [Validators.maxLength(100)]),
+      price: this.fb.control(0, [Validators.required, this.rangeValidator]),
+      rating: this.fb.control(0, [Validators.required, this.rangeValidator])
     });
+  }
+
+  rangeValidator(control: AbstractControl): ValidationErrors | null {
+    if (control.value < 0 || control.value > 5) {
+      return { range: { min: 0, max: 5 } };
+    }
+    return null;
   }
 
   save() {

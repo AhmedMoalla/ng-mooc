@@ -8,8 +8,6 @@
                 <input 
                     matInput 
                     placeholder="Title"
-                    required
-                    minlength="3"
                     formControlName="title">
                 <mat-error 
                     *ngIf="courseForm.get('title').hasError('required')">
@@ -24,8 +22,6 @@
                 <input 
                     matInput 
                     placeholder="Image Url"
-                    required
-                    [pattern]="urlRegex"
                     formControlName="image">
                 <mat-error 
                     *ngIf="courseForm.get('image').hasError('required')">
@@ -40,8 +36,6 @@
                 <input 
                     matInput 
                     placeholder="Category"
-                    required
-                    minlength="3"
                     formControlName="category">
                 <mat-error 
                     *ngIf="courseForm.get('category').hasError('required')">
@@ -56,7 +50,6 @@
                 <input 
                     matInput 
                     placeholder="Description"
-                    maxlength="100"
                     formControlName="description">
                 <mat-error 
                     *ngIf="courseForm.get('description').hasError('maxlength')">
@@ -67,42 +60,34 @@
                 <input 
                     matInput 
                     placeholder="Price"
-                    min="0"
-                    max="100"
-                    required
                     formControlName="price">
                 <mat-error
                     *ngIf="courseForm.get('price').hasError('required')">
                     Price is <strong>required</strong>
                 </mat-error>    
                 <mat-error
-                    *ngIf="courseForm.get('price').hasError('min')">
-                    Price can't be lesser than<strong>{{ courseForm.get('price').getError('min').min | currency:'USD' }}</strong>
-                </mat-error>
-                <mat-error
-                    *ngIf="courseForm.get('price').hasError('max')">
-                    Price can't be greater than<strong>{{ courseForm.get('price').getError('max').max | currency:'USD' }}</strong>
+                    *ngIf="courseForm.get('price').hasError('range')">
+                    Price must be between
+                    <strong>{{ courseForm.get('price').getError('range').min | currency:'USD' }}</strong>
+                     and 
+                    <strong>{{ courseForm.get('price').getError('range').max | currency:'USD' }}</strong>
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input 
-                    matInput 
+                    matInput
                     placeholder="Rating"
-                    min="0"
-                    max="5"
-                    required
                     formControlName="rating">
                 <mat-error
                     *ngIf="courseForm.get('rating').hasError('required')">
                     Rating is <strong>required</strong>
                 </mat-error>    
                 <mat-error
-                    *ngIf="courseForm.get('rating').hasError('min')">
-                    Rating can't be lesser than<strong>{{ courseForm.get('rating').getError('min').min }}</strong>
-                </mat-error>
-                <mat-error
-                    *ngIf="courseForm.get('rating').hasError('max')">
-                    Rating can't be greater than<strong>{{ courseForm.get('rating').getError('max').max }}</strong>
+                    *ngIf="courseForm.get('rating').hasError('range')">
+                    Rating must be between
+                    <strong>{{ courseForm.get('rating').getError('range').min }}</strong>
+                     and 
+                    <strong>{{ courseForm.get('rating').getError('range').max }}</strong>
                 </mat-error>
             </mat-form-field>
             <button mat-raised-button color="primary" type="submit" [disabled]="courseForm.invalid">Create</button>
